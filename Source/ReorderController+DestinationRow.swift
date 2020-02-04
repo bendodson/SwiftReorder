@@ -47,7 +47,7 @@ extension ReorderController {
         delegate?.tableView(tableView, reorderRowAt: context.destinationRow, to: newContext.destinationRow)
         
         /// Workaround to prevent animation glitches - https://github.com/adamshin/SwiftReorder/issues/68
-        if #available(iOS 13.0, *), newContext.destinationRow == IndexPath(row: 0, section: 0) {
+        if #available(iOS 13.0, *), newContext.destinationRow.row == 0 {
             tableView.reloadData()
         } else {
             tableView.moveRow(at: context.destinationRow, to: newContext.destinationRow)
